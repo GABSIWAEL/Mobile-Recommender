@@ -1,0 +1,1 @@
+web: gunicorn predictorV2:app

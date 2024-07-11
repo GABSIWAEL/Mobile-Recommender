@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .advanced-search {
+            display: none;
+            /* Hide advanced search initially */
+        }
+
+        .toggle-advanced {
+            margin-top: 10px;
+            cursor: pointer;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Phone Recommendation System</h1>
+    <form action="/recommend" method="GET">
+        <!-- Simple Search Inputs -->
+        <label for="Brand">Brand:</label>
+        <input type="text" id="Brand" name="Brand" placeholder="Enter brand...">
+
+        <label for="NetworkTechnology">Network Technology:</label>
+        <input type="text" id="NetworkTechnology" name="NetworkTechnology" placeholder="Enter network technology...">
+
+        <label for="DisplayType">Display Type:</label>
+        <input type="text" id="DisplayType" name="DisplayType" placeholder="Enter display type...">
+
+        <label for="MainCamera">Main Camera:</label>
+        <input type="text" id="MainCamera" name="MainCamera" placeholder="Enter main camera...">
+
+        <label for="Battery">Battery:</label>
+        <input type="text" id="Battery" name="Battery" placeholder="Enter battery...">
+
+        <!-- Toggle for Advanced Search -->
+        <div class="toggle-advanced" onclick="toggleAdvanced()">Show Advanced Search</div>
+
+        <!-- Advanced Search Inputs (Initially Hidden) -->
+        <div class="advanced-search">
+
+            <label for="Model">Model:</label>
+            <input type="text" id="Model" name="Model" placeholder="Enter model...">
+
+
+            <label for="2GBands">2G Bands:</label>
+            <input type="text" id="2GBands" name="2GBands" placeholder="Enter 2G bands...">
+
+            <label for="GPRS">GPRS:</label>
+            <input type="text" id="GPRS" name="GPRS" placeholder="Enter GPRS...">
+
+            <label for="EDGE">EDGE:</label>
+            <input type="text" id="EDGE" name="EDGE" placeholder="Enter EDGE...">
+
+            <label for="LaunchDate">Launch Date:</label>
+            <input type="text" id="LaunchDate" name="LaunchDate" placeholder="Enter launch date...">
+
+            <label for="LaunchStatus">Launch Status:</label>
+            <input type="text" id="LaunchStatus" name="LaunchStatus" placeholder="Enter launch status...">
+
+            <label for="BodyDimensions">Body Dimensions:</label>
+            <input type="text" id="BodyDimensions" name="BodyDimensions" placeholder="Enter body dimensions...">
+
+            <label for="BodyWeight">Body Weight:</label>
+            <input type="text" id="BodyWeight" name="BodyWeight" placeholder="Enter body weight...">
+
+            <label for="SIM">SIM:</label>
+            <input type="text" id="SIM" name="SIM" placeholder="Enter SIM...">
+
+
+            <label for="DisplaySize">Display Size:</label>
+            <input type="text" id="DisplaySize" name="DisplaySize" placeholder="Enter display size...">
+
+            <label for="DisplayResolution">Display Resolution:</label>
+            <input type="text" id="DisplayResolution" name="DisplayResolution"
+                placeholder="Enter display resolution...">
+
+            <label for="MemoryCardSlot">Memory Card Slot:</label>
+            <input type="text" id="MemoryCardSlot" name="MemoryCardSlot" placeholder="Enter memory card slot...">
+
+            <label for="PhonebookMemory">Phonebook Memory:</label>
+            <input type="text" id="PhonebookMemory" name="PhonebookMemory" placeholder="Enter phonebook memory...">
+
+            <label for="CallRecordsMemory">Call Records Memory:</label>
+            <input type="text" id="CallRecordsMemory" name="CallRecordsMemory"
+                placeholder="Enter call records memory...">
+
+            <label for="Loudspeaker">Loudspeaker:</label>
+            <input type="text" id="Loudspeaker" name="Loudspeaker" placeholder="Enter loudspeaker...">
+
+            <label for="AlertTypes">Alert Types:</label>
+            <input type="text" id="AlertTypes" name="AlertTypes" placeholder="Enter alert types...">
+
+            <label for="3.5mmJack">3.5mm Jack:</label>
+            <input type="text" id="3.5mmJack" name="3.5mmJack" placeholder="Enter 3.5mm jack...">
+
+            <label for="Wi-Fi">Wi-Fi:</label>
+            <input type="text" id="Wi-Fi" name="Wi-Fi" placeholder="Enter Wi-Fi...">
+
+            <label for="Bluetooth">Bluetooth:</label>
+            <input type="text" id="Bluetooth" name="Bluetooth" placeholder="Enter Bluetooth...">
+
+            <label for="GPS">GPS:</label>
+            <input type="text" id="GPS" name="GPS" placeholder="Enter GPS...">
+
+            <label for="Radio">Radio:</label>
+            <input type="text" id="Radio" name="Radio" placeholder="Enter radio...">
+
+            <label for="USB">USB:</label>
+            <input type="text" id="USB" name="USB" placeholder="Enter USB...">
+
+            <label for="Sensors">Sensors:</label>
+            <input type="text" id="Sensors" name="Sensors" placeholder="Enter sensors...">
+
+            <label for="Messaging">Messaging:</label>
+            <input type="text" id="Messaging" name="Messaging" placeholder="Enter messaging...">
+
+            <label for="Browser">Browser:</label>
+            <input type="text" id="Browser" name="Browser" placeholder="Enter browser...">
+
+            <label for="Clock">Clock:</label>
+            <input type="text" id="Clock" name="Clock" placeholder="Enter clock...">
+
+            <label for="Alarm">Alarm:</label>
+            <input type="text" id="Alarm" name="Alarm" placeholder="Enter alarm...">
+
+            <label for="Games">Games:</label>
+            <input type="text" id="Games" name="Games" placeholder="Enter games...">
+
+            <label for="Java">Java:</label>
+            <input type="text" id="Java" name="Java" placeholder="Enter Java...">
+
+            <label for="Features">Features:</label>
+            <input type="text" id="Features" name="Features" placeholder="Enter features...">
+
+            <label for="Colors">Colors:</label>
+            <input type="text" id="Colors" name="Colors" placeholder="Enter colors...">
+
+            <label for="3GBands">3G Bands:</label>
+            <input type="text" id="3GBands" name="3GBands" placeholder="Enter 3G bands...">
+
+            <label for="NetworkSpeed">Network Speed:</label>
+            <input type="text" id="NetworkSpeed" name="NetworkSpeed" placeholder="Enter network speed...">
+
+            <label for="OS">OS:</label>
+            <input type="text" id="OS" name="OS" placeholder="Enter OS...">
+
+            <label for="Chipset">Chipset:</label>
+            <input type="text" id="Chipset" name="Chipset" placeholder="Enter chipset...">
+
+            <label for="CPU">CPU:</label>
+            <input type="text" id="CPU" name="CPU" placeholder="Enter CPU...">
+
+            <label for="GPU">GPU:</label>
+            <input type="text" id="GPU" name="GPU" placeholder="Enter GPU...">
+
+            <label for="InternalMemory">Internal Memory:</label>
+            <input type="text" id="InternalMemory" name="InternalMemory" placeholder="Enter internal memory...">
+
+
+            <label for="MainCameraVideo">Main Camera Video:</label>
+            <input type="text" id="MainCameraVideo" name="MainCameraVideo" placeholder="Enter main camera video...">
+
+            <label for="Price">Price:</label>
+            <input type="text" id="Price" name="Price" placeholder="Enter price...">
+
+            <label for="MainCameraFeatures">Main Camera Features:</label>
+            <input type="text" id="MainCameraFeatures" name="MainCameraFeatures"
+                placeholder="Enter main camera features...">
+
+            <label for="Body">Body:</label>
+            <input type="text" id="Body" name="Body" placeholder="Enter body...">
+
+            <label for="4GBands">4G Bands:</label>
+            <input type="text" id="4GBands" name="4GBands" placeholder="Enter 4G bands...">
+
+            <label for="BodyBuild">Body Build:</label>
+            <input type="text" id="BodyBuild" name="BodyBuild" placeholder="Enter body build...">
+
+            <label for="DisplayProtection">Display Protection:</label>
+            <input type="text" id="DisplayProtection" name="DisplayProtection"
+                placeholder="Enter display protection...">
+
+            <label for="Memory">Memory:</label>
+            <input type="text" id="Memory" name="Memory" placeholder="Enter memory...">
+
+            <label for="DualMainCamera">Dual Main Camera:</label>
+            <input type="text" id="DualMainCamera" name="DualMainCamera" placeholder="Enter dual main camera...">
+
+            <label for="DualSelfieCamera">Dual Selfie Camera:</label>
+            <input type="text" id="DualSelfieCamera" name="DualSelfieCamera" placeholder="Enter dual selfie camera...">
+
+            <label for="SelfieCameraFeatures">Selfie Camera Features:</label>
+            <input type="text" id="SelfieCameraFeatures" name="SelfieCameraFeatures"
+                placeholder="Enter selfie camera features...">
+
+            <label for="SelfieCameraVideo">Selfie Camera Video:</label>
+            <input type="text" id="SelfieCameraVideo" name="SelfieCameraVideo"
+                placeholder="Enter selfie camera video...">
+
+            <label for="NFC">NFC:</label>
+            <input type="text" id="NFC" name="NFC" placeholder="Enter NFC...">
+
+            <label for="BatteryCharging">Battery Charging:</label>
+            <input type="text" id="BatteryCharging" name="BatteryCharging" placeholder="Enter battery charging...">
+
+            <label for="Models">Models:</label>
+            <input type="text" id="Models" name="Models" placeholder="Enter models...">
+
+            <label for="PerformanceTests">Performance Tests:</label>
+            <input type="text" id="PerformanceTests" name="PerformanceTests" placeholder="Enter performance tests...">
+
+            <label for="CameraTests">Camera Tests:</label>
+            <input type="text" id="CameraTests" name="CameraTests" placeholder="Enter camera tests...">
+
+            <label for="LoudspeakerTests">Loudspeaker Tests:</label>
+            <input type="text" id="LoudspeakerTests" name="LoudspeakerTests" placeholder="Enter loudspeaker tests...">
+
+            <label for="AudioQualityTests">Audio Quality Tests:</label>
+            <input type="text" id="AudioQualityTests" name="AudioQualityTests"
+                placeholder="Enter audio quality tests...">
+
+            <label for="BatteryLifeTests">Battery Life Tests:</label>
+            <input type="text" id="BatteryLifeTests" name="BatteryLifeTests" placeholder="Enter battery life tests...">
+
+            <label for="DisplayTests">Display Tests:</label>
+            <input type="text" id="DisplayTests" name="DisplayTests" placeholder="Enter display tests...">
+
+            <label for="SingleSelfieCamera">Single Selfie Camera:</label>
+            <input type="text" id="SingleSelfieCamera" name="SingleSelfieCamera"
+                placeholder="Enter single selfie camera...">
+
+            <label for="InfraredPort">Infrared Port:</label>
+            <input type="text" id="InfraredPort" name="InfraredPort" placeholder="Enter infrared port...">
+
+            <label for="5GBands">5G Bands:</label>
+            <input type="text" id="5GBands" name="5GBands" placeholder="Enter 5G bands...">
+
+            <label for="QuadMainCamera">Quad Main Camera:</label>
+            <input type="text" id="QuadMainCamera" name="QuadMainCamera" placeholder="Enter quad main camera...">
+
+            <label for="TripleMainCamera">Triple Main Camera:</label>
+            <input type="text" id="TripleMainCamera" name="TripleMainCamera" placeholder="Enter triple main camera...">
+
+            <label for="Sound">Sound:</label>
+            <input type="text" id="Sound" name="Sound" placeholder="Enter sound...">
+
+            <label for="SAREU">SAR EU:</label>
+            <input type="text" id="SAREU" name="SAREU" placeholder="Enter SAR EU...">
+
+            <label for="FiveMainCamera">Five Main Camera:</label>
+            <input type="text" id="FiveMainCamera" name="FiveMainCamera" placeholder="Enter five main camera...">
+
+            <label for="Languages">Languages:</label>
+            <input type="text" id="Languages" name="Languages" placeholder="Enter languages...">
+
+            <label for="Keyboard">Keyboard:</label>
+            <input type="text" id="Keyboard" name="Keyboard" placeholder="Enter keyboard...">
+
+            <label for="SAR">SAR:</label>
+            <input type="text" id="SAR" name="SAR" placeholder="Enter SAR...">
+
+
+            <label for="DualorTripleMainCamera">Dual or Triple Main Camera:</label>
+            <input type="text" id="DualorTripleMainCamera" name="DualorTripleMainCamera"
+                placeholder="Enter dual or triple main camera...">
+
+            <label for="MusicPlayBattery">Music Play Battery:</label>
+            <input type="text" id="MusicPlayBattery" name="MusicPlayBattery" placeholder="Enter music play battery...">
+
+            <label for="TripleSelfieCamera">Triple Selfie Camera:</label>
+            <input type="text" id="TripleSelfieCamera" name="TripleSelfieCamera"
+                placeholder="Enter triple selfie camera...">
+
+            <label for="MainCameraVersion1">Main Camera Version 1:</label>
+            <input type="text" id="MainCameraVersion1" name="MainCameraVersion1"
+                placeholder="Enter main camera version 1...">
+
+            <label for="SelfieCamera">Selfie Camera:</label>
+            <input type="text" id="SelfieCamera" name="SelfieCamera" placeholder="Enter selfie camera...">
+
+            <label for="Camera">Camera:</label>
+            <input type="text" id="Camera" name="Camera" placeholder="Enter camera...">
+
+            <label for="Network">Network:</label>
+            <input type="text" id="Network" name="Network" placeholder="Enter network...">
+
+            <label for="TalkTimeBattery">Talk Time Battery:</label>
+            <input type="text" id="TalkTimeBattery" name="TalkTimeBattery" placeholder="Enter talk time battery...">
+
+            <label for="Stand-byBattery">Stand-by Battery:</label>
+            <input type="text" id="Stand-byBattery" name="Stand-byBattery" placeholder="Enter stand-by battery...">
+
+            <!-- Add more advanced search inputs as needed -->
+        </div>
+
+        <input type="submit" value="Search">
+    </form>
+
+    <script>
+        function toggleAdvanced() {
+            var advancedSearch = document.querySelector('.advanced-search');
+            var toggleText = document.querySelector('.toggle-advanced');
+
+            if (advancedSearch.style.display === 'none') {
+                advancedSearch.style.display = 'block';
+                toggleText.textContent = 'Hide Advanced Search';
+            } else {
+                advancedSearch.style.display = 'none';
+                toggleText.textContent = 'Show Advanced Search';
+            }
+        }
+    </script>
+</body>
+
+</html>
