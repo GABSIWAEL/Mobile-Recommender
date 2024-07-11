@@ -4,7 +4,7 @@ import csv
 app = Flask(__name__)
 
 # Path to your CSV file
-csv_file = r'C:\Users\MSI\Desktop\projects\Mobile Recommender\gsm.csv'
+csv_file = 'gsm.csv'
 
 # Read CSV file and store data in memory
 
