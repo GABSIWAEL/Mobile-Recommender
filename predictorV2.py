@@ -1,14 +1,12 @@
 from flask import Flask, render_template, request
 import csv
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 # Path to your CSV file
 csv_file = 'gsm.csv'
 
 # Read CSV file and store data in memory
-
-
 def read_csv():
     phones = []
     headers = [
@@ -35,20 +33,16 @@ def read_csv():
             phones.append(phone)
     return phones
 
-
 phones_data = read_csv()
 
-
-@app.route('/', methods=['GET', 'POST'])
+@application.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('index.html')
 
-
-@app.route('/recommend', methods=['GET', 'POST'])
+@application.route('/recommend', methods=['GET', 'POST'])
 def recommend():
     phones = []
-    user_input = {header: request.args.get(
-        header) for header in phones_data[0].keys()}
+    user_input = {header: request.args.get(header) for header in phones_data[0].keys()}
 
     for phone in phones_data:
         match = True
@@ -61,6 +55,5 @@ def recommend():
 
     return render_template('results.html', phones=phones)
 
-
 if __name__ == '__main__':
-    app.run()
+    application.run(debug=True)
